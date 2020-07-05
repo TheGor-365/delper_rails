@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Add technology</h1>
+</div>
+
+<div class="container">
+  <%= form_for :technology, url: technologies_path do |f| %>
+    <div class="form-group col-md-8">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "form-control" %>
+
+      <%= f.label :purpose %>
+      <%= f.text_field :purpose, :class => "form-control" %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, :class => "form-control" %>
+
+      <%= f.label :popularity %>
+      <%= f.text_field :popularity, :class => "form-control" %>
+    </div>
+
+    <%= f.submit :class => "btn btn-primary btn-lg" %>
+  <% end %>
+</div>

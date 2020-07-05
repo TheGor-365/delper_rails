@@ -10,16 +10,18 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      Hello <%= current_user.username %>
-      <%= button_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-link text-decoration-none pl-0" %>
-    <% else %>
-      <%= button_to "Sign in", new_user_session_path, :class => "btn btn-link text-decoration-none pl-0" %>
-    <% end %>
+    <div class="container">
+      <% if user_signed_in? %>
+        Hello <%= current_user.username %>
+        <%= button_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-link text-decoration-none pl-0" %>
+      <% else %>
+        <%= button_to "Sign in", new_user_session_path, :class => "btn btn-link text-decoration-none pl-0" %>
+      <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+      <p class="notice success"><%= notice %></p>
+      <p class="alert danger"><%= alert %></p>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,17 +1,109 @@
 <div class="container">
+
   <div>
-    <h1>technology.name.capitalize</h1>
-  </div>
-  
-  <div>
-    <p>
-      technology.description
-    </p>
+    <h1><%= @technology.name.capitalize %></h1>
   </div>
 
-  <div class="container p-0 mt-5 mb-5 border rounded p-3">
+  <div>
     <h5 class="text-muted mt-3 mb-3">
-      <%= @article.purpose %>:
+      <%= @technology.purpose %>
     </h5>
+  </div>
+
+  <div class="container mt-5 mb-3 border rounded p-3">
+    <div>
+      <p class="text-muted">
+        <%= @technology.description %>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <small class="">Technology rating: <%= @technology.popularity %></small>
+    </div>
+  </div>
+
+
+  <% @technology.rubies.each do |ruby| %>
+    <div class="container p-0 mt-5 mb-5 border rounded p-3">
+
+      <p class="mt-4">
+        <%= ruby.lesson_title %>
+      </p>
+
+      <small class="text-muted mr-2">
+        Lesson number: <%= ruby.lesson_number %>
+      </small>
+      <hr>
+
+      <p>
+        <%= ruby.question %>
+      </p>
+
+      <p>
+        <%= ruby.answer %>
+      </p>
+
+      <p>
+        <%= ruby.example %>
+      </p>
+
+      <p>
+        <%= ruby.link %>
+      </p>
+      </div>
+  <% end %>
+
+  <div class="container mt-5 border rounded p-3">
+    <p class="text-muted">
+      Add lesson
+    </p>
+
+    <%= form_for([@technology, @technology.rubies.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label :lesson_title %>
+        <div class="col-md-8">
+          <%= f.text_field :lesson_title, :class => "form-control", :autofocus => true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :lesson_number %>
+        <div class="col-md-8">
+          <%= f.text_field :lesson_number, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :question %>
+        <div class="col-md-8">
+          <%= f.text_area :question, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :answer %>
+        <div class="col-md-8">
+          <%= f.text_area :answer, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :example %>
+        <div class="col-md-8">
+          <%= f.text_area :example, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :link %>
+        <div class="col-md-8">
+          <%= f.text_field :link, :class => "form-control" %>
+        </div>
+      </div>
+
+      <%= f.submit :class => "btn btn-primary btn-lg" %>
+    <% end %>
   </div>
 </div>

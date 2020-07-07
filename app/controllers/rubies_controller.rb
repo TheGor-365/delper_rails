@@ -11,13 +11,10 @@ class RubiesController < ApplicationController
   end
 
   def create
-    @ruby = Ruby.new(technology_params)
+    @technology = Technology.find(params[:technology_id])
+    @technology.rubies.create(ruby_params)
 
-    if @ruby.save
-      redirect_to @ruby
-    else
-      render action: 'new'
-    end
+    redirect_to technology_path(@technology)
   end
 
   def edit
@@ -42,7 +39,7 @@ class RubiesController < ApplicationController
   end
 
   private
-  def ruby_path
+  def ruby_params
     params.require(:ruby).permit(:lesson_title, :lesson_number, :question, :answer, :example, :link)
   end
 end

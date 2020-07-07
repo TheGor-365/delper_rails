@@ -1,11 +1,26 @@
 <div class="container">
   <div>
-    <h1 class="text-muted mt-5 mb-5">
-      Edit <%= @technology.purpose %>
+    <h1 class="mt-5 mb-3">
+      Edit
     </h1>
+
+    <div class="text-muted border rounded p-3 mb-3">
+      <h4>
+        Technology: <%= @technology.name %>
+      </h4>
+      <p>
+        Purpose: <%= @technology.purpose %>
+      </p>
+      <small>
+        Technology id: <%= @technology.id %>
+      </small>
+    </div>
+
+
+
   </div>
 
-  <%= form_for :technology, technology_path(@technology), method: :put do |f| %>
+  <%= form_for :technology, url: technology_path(@technology), method: :put do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, :class => "form-control" %>

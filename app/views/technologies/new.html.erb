@@ -1,9 +1,10 @@
 <div class="container">
   <h1>Add technology</h1>
+  
 </div>
 
 <div class="container">
-  <%= form_for :technology, url: technologies_path do |f| %>
+  <%= form_for :technology, url: technologies_path, :class => "btn btn-primary btn-sm mr-2" do |f| %>
     <div class="form-group col-md-8">
       <%= f.label :name %>
       <%= f.text_field :name, :class => "form-control" %>

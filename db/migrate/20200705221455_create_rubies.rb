@@ -7,6 +7,7 @@ class CreateRubies < ActiveRecord::Migration[6.0]
       t.text :answer
       t.text :example
       t.text :link
+      t.references :technology, null: false, foreign_key: true
 
       t.timestamps
     end

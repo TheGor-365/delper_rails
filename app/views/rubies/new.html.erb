@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Add ruby lesson</h1>
+</div>
+
+<div class="container">
+  <%= form_for :ruby, url: technology_rubies_path do |f| %>
+    <div class="form-group col-md-8">
+      <%= f.label :lesson_title %>
+      <%= f.text_field :lesson_title, :class => "form-control" %>
+
+      <%= f.label :lesson_number %>
+      <%= f.text_field :lesson_number, :class => "form-control" %>
+
+      <%= f.label :question %>
+      <%= f.text_field :question, :class => "form-control" %>
+
+      <%= f.label :answer %>
+      <%= f.text_area :answer, :class => "form-control" %>
+
+      <%= f.label :example %>
+      <%= f.text_area :example, :class => "form-control" %>
+
+      <%= f.label :link %>
+      <%= f.text_field :link, :class => "form-control" %>
+    </div>
+
+    <%= f.submit :class => "btn btn-primary btn-lg" %>
+  <% end %>
+</div>

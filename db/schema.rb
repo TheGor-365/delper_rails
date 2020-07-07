@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_07_05_221455) do
 
-  create_table "models", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_models_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
-  end
-
   create_table "rubies", force: :cascade do |t|
     t.string "lesson_title"
     t.integer "lesson_number"
@@ -31,8 +19,10 @@ ActiveRecord::Schema.define(version: 2020_07_05_221455) do
     t.text "answer"
     t.text "example"
     t.text "link"
+    t.integer "technology_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["technology_id"], name: "index_rubies_on_technology_id"
   end
 
   create_table "technologies", force: :cascade do |t|
@@ -47,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_221455) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "username", default: "user", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -57,10 +48,10 @@ ActiveRecord::Schema.define(version: 2020_07_05_221455) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "rubies", "technologies"
 end

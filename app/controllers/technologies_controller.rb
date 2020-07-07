@@ -42,7 +42,7 @@ class TechnologiesController < ApplicationController
   end
 
   private
-  def technology_path
+  def technology_params
     params.require(:technology).permit(:name, :purpose, :description, :popularity)
   end
 end
